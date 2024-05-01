@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function App() {
+function ListarCategorias() {
   const [categorias, setCategorias] = useState([]);
   const [nombre, setNombre] = useState('');
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState([]);
@@ -70,7 +70,7 @@ function App() {
       return;
     }
     // Verificar si el nuevo nombre excede el límite de caracteres permitidos
-    if (nuevoNombreCategoria.length > 60) { 
+    if (nuevoNombreCategoria.length > 60) {
       console.error("El nombre de la categoría excede el límite de 60 caracteres.");
       alert("Supero el limite de 60 caracteres ")
       return;
@@ -103,7 +103,7 @@ function App() {
 
   return (
     <div className="container mt-5">
-      <h1 className='mb-4 ' style={{backgroundColor: 'Gray'}}>CRUD de Categorías</h1>
+      <h1 className='mb-4 ' style={{ backgroundColor: 'Gray' }}>CRUD de Categorías</h1>
       <form onSubmit={(e) => {
         e.preventDefault();
         crearCategoria();
@@ -113,7 +113,7 @@ function App() {
           <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
         </label>
         <button type="submit" className='btn btn-dark'>Crear Categoría</button>
-      </form> 
+      </form>
       <h2>Categorías</h2>
       <table className='table table-dark table-striped table-bordered'>
         <thead>
@@ -166,4 +166,4 @@ function App() {
   );
 }
 
-export default App;
+export default ListarCategorias;

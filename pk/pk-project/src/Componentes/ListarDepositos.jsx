@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function App() {
+function ListarDepositos() {
   const [depositos, setDepositos] = useState([]);
   const [nombre, setNombre] = useState('');
   const [direccion, setDireccion] = useState('');
@@ -194,4 +194,4 @@ function App() {
   );
 }
 
-export default App;
+export default ListarDepositos;

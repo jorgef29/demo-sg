@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function App() {
+function ListarDepositos() {
     const [productos, setProductos] = useState([]);
 
 
@@ -121,33 +121,33 @@ function App() {
             return;
         }
 
-        !selectedCategoria ? alert("Seleccione una Categoria"):
-        !selectedMarca ? alert("Seleccione una Marca"):
+        !selectedCategoria ? alert("Seleccione una Categoria") :
+            !selectedMarca ? alert("Seleccione una Marca") :
 
-        axios.put(`http://api.rodrigomaidana.com:8080/productos/${id}`,
-            {
-                "marca": {
-                    "id": selectedMarca,
-                },
-                "categoria": {
-                    "id": selectedCategoria,
-                },
-                "descripcion": descripcion
-            })
-            .then(() => {
-                console.log("Producto modificado:", id);
-                cargarProductos();
-                setMostrarModal(false);
-            })
-            .catch(error => {
-                if (error.response && error.response.status === 400) {
-                    console.error("Error: superado el límite de caracteres permitido (200)");
-                    alert("El nombre no puede superar los 200 caracteres.");
-                } else {
-                    console.error("Error al modificar el producto:", error);
-                    alert("Error al modificar el producto.");
-                }
-            });
+                axios.put(`http://api.rodrigomaidana.com:8080/productos/${id}`,
+                    {
+                        "marca": {
+                            "id": selectedMarca,
+                        },
+                        "categoria": {
+                            "id": selectedCategoria,
+                        },
+                        "descripcion": descripcion
+                    })
+                    .then(() => {
+                        console.log("Producto modificado:", id);
+                        cargarProductos();
+                        setMostrarModal(false);
+                    })
+                    .catch(error => {
+                        if (error.response && error.response.status === 400) {
+                            console.error("Error: superado el límite de caracteres permitido (200)");
+                            alert("El nombre no puede superar los 200 caracteres.");
+                        } else {
+                            console.error("Error al modificar el producto:", error);
+                            alert("Error al modificar el producto.");
+                        }
+                    });
     };
 
     // Función para cancelar la edición del producto
@@ -261,4 +261,4 @@ function App() {
     );
 }
 
-export default App;
+export default ListarDepositos;
